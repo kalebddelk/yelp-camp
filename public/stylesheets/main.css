@@ -1,0 +1,10 @@
+.thumbnail img {
+    width: 100%;
+    border-radius: 5px;
+}
+.thumbnail {
+    padding: 0;
+}
+.delete-form {
+    display: inline;
+}
