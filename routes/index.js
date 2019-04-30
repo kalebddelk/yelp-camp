@@ -18,10 +18,11 @@ router.post('/register', (req, res) =>{
     let newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, (err, user) =>{
         if(err){
+            console.log(err);
             return res.render('register', {'error': err.message});
         }
         passport.authenticate('local')(req, res, function(){
-            req.flash('success', 'Welcome to YelpCamp '+user.username);
+            req.flash('success', 'Welcome to YelpCamp, '+user.username+'!');
             res.redirect('/campgrounds');
         });
     });
