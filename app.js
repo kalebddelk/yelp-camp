@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express'),
       app = express(),
       bodyParser = require('body-parser'),
@@ -28,7 +30,7 @@ app.use(flash());
 
 // PASSPORT CONFIG
 app.use(require('express-session')({
-    secret: 'the most secret secret of all secrets',
+    secret: 'what\'s the elvish word for friend',
     resave: false,
     saveUninitialized: false
 }));

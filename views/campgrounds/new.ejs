@@ -5,16 +5,25 @@
         <div style='width: 30%; margin: 25px auto;'>
             <form action='/campgrounds' method='POST'>
                 <div class='form-group'>
-                    <input class='form-control' type='text' placeholder='name' name='name'>
+                    <label for='name'>Name</label>
+                    <input class='form-control' type='text' placeholder='Yosemite' name='name' id='name' required>
                 </div>
                 <div class='form-group'>
-                    <input class='form-control' type='number' placeholder='price' name='price' min='0.00' step='.01'>
+                    <label for='image'>Image Url</label>
+                    <input class='form-control' type='text' name='image' id='image' pattern='^https:\/\/images\.unsplash\.com\/.*' title='Only images from images.unsplash.com allowed. See link below for instructiopns.' placeholder='https://images.unsplash.com/...' required>
+                    <small>Click <a href='https://youtu.be/Bn3weNRQRDE'>here</a> for tutorial on how to copy unsplash urls.</small>
                 </div>
                 <div class='form-group'>
-                    <input class='form-control' type='text' placeholder='image url' name='image'>
+                    <label for='price'>Price</label>
+                    <input class='form-control' type='number' placeholder='9.99' name='price' min='0' step='.01' id='price' required>
                 </div>
                 <div class='form-group'>
-                    <input class='form-control' type='text' placeholder='description' name='description'>
+                    <label for='location'>Location</label>
+                    <input class='form-control' type='text' placeholder='Yosemite National Park, CA' name='location' id='location'>
+                </div>
+                <div class='form-group'>
+                    <label for='description'>Description</label>
+                    <input class='form-control' type='text' placeholder="California's Sierra Nevada mountains are the perfect place to rest your weary mind while you..." name='description' id='description' required>
                 </div>
                 <div class='form-group'>
                     <button class='btn btn-lg btn-primary btn-block'>Submit!</button>
