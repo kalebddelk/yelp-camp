@@ -10,7 +10,7 @@ router.get('/', (req, res) =>{
 
 //show register form
 router.get('/register', (req, res) =>{
-    res.render('register');
+    res.render('register', {page: 'register'});
 });
 
 //handle sign up logic
@@ -29,7 +29,7 @@ router.post('/register', (req, res) =>{
 
 //show login form
 router.get('/login', (req, res) =>{
-    res.render('login', {});
+    res.render('login', {page: 'login'});
 });
 
 //handle login logic
