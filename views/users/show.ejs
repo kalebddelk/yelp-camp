@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<% if(currentUser && currentUser === req.params.id) { %>
+<% if(currentUser && user._id.equals(currentUser.id)) { %>
     <div class='row'>
         <a class='btn btn-warning btn-sm pull-right col-md-4' href='../forgot'>Forgot password?</a>
    </div>
@@ -9,24 +9,7 @@
     <div class='col-md-4'>
         <h1><%=user.firstName + ' ' + user.lastName%></h1>
         <a href='mailto:<%=user.email%>'><%=user.email%></a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-        labore et dolore magna aliqua. Amet cursus sit amet dictum sit amet. Sagittis aliquam malesuada 
-        bibendum arcu. Mauris sit amet massa vitae tortor condimentum lacinia quis. Id donec ultrices 
-        tincidunt arcu. Purus sit amet volutpat consequat mauris nunc. Mi tempus imperdiet nulla malesuada 
-        pellentesque elit eget. Semper eget duis at tellus at urna. Elit scelerisque mauris pellentesque 
-        pulvinar pellentesque habitant morbi tristique. Cras tincidunt lobortis feugiat vivamus. At erat 
-        pellentesque adipiscing commodo elit at imperdiet dui. Urna cursus eget nunc scelerisque. Arcu non 
-        odio euismod lacinia at. A diam maecenas sed enim ut sem viverra aliquet eget. Imperdiet proin 
-        fermentum leo vel orci. Volutpat sed cras ornare arcu. Scelerisque eu ultrices vitae auctor eu 
-        augue ut. Dolor sit amet consectetur adipiscing elit. A scelerisque purus semper eget duis at tellus.</p>
-
-        <p>Amet cursus sit amet dictum sit amet justo. Ullamcorper morbi tincidunt ornare massa eget egestas 
-        purus viverra accumsan. Feugiat in ante metus dictum. Congue quisque egestas diam in arcu cursus euismod
-        quis. Justo donec enim diam vulputate ut. Nulla porttitor massa id neque aliquam vestibulum morbi 
-        blandit cursus. Ultrices mi tempus imperdiet nulla malesuada pellentesque. Elementum tempus egestas 
-        sed sed risus pretium quam. Vestibulum morbi blandit cursus risus at ultrices mi tempus imperdiet. 
-        Volutpat odio facilisis mauris sit amet massa. Nibh venenatis cras sed felis eget velit aliquet sagittis 
-        id. Velit sed ullamcorper morbi tincidunt.</p>
+        <p><%=user.aboutMe%></p>
     </div>
     <div class='col-md-8'>
         <h3><%=user.username%>'s campgrounds</h3>

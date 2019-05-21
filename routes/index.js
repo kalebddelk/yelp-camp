@@ -23,7 +23,8 @@ router.post('/register', (req, res) =>{
             username: req.body.username,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email: req.body.email
+            email: req.body.email,
+            aboutMe: req.body.aboutMe
         });
     if (req.body.adminCode === 'Genie') {
         newUser.isAdmin = true;
@@ -52,8 +53,8 @@ router.post('/login', passport.authenticate('local',
         failureRedirect: '/login',
         failureFlash: true,
         successFlash: 'Welcome to YelpCamp!'
-    })
-);
+    }), (req, res) =>{
+});
 
 //logout route
 router.get('/logout', (req, res) =>{
