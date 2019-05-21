@@ -1,8 +1,10 @@
 <% include ../partials/header %>
 
-<div class='row'>
-    <a class='btn btn-warning btn-sm pull-right col-md-4' href='../forgot'>Forgot password?</a>
-</div>
+<% if(currentUser && currentUser === req.params.id) { %>
+    <div class='row'>
+        <a class='btn btn-warning btn-sm pull-right col-md-4' href='../forgot'>Forgot password?</a>
+   </div>
+<% } %>
 <div class='row'>
     <div class='col-md-4'>
         <h1><%=user.firstName + ' ' + user.lastName%></h1>

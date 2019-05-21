@@ -49,10 +49,11 @@ router.get('/login', (req, res) =>{
 router.post('/login', passport.authenticate('local', 
     {
         successRedirect: '/campgrounds', 
-        failureRedirect: '/login'
-    }), (req, res) =>{
-    
-});
+        failureRedirect: '/login',
+        failureFlash: true,
+        successFlash: 'Welcome to YelpCamp!'
+    })
+);
 
 //logout route
 router.get('/logout', (req, res) =>{
