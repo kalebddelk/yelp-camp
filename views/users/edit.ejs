@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<div class='row'>
+    <h1 style='text-align: center'>Edit Profile</h1>
+    <div style='width: 70%; margin: 25px auto;'>
+        <form action='/users/<%=user._id%>/?_method=PUT' method='POST'>
+            <div class='form-group'>
+                <label for='username'>Username</label>
+                <input class='form-control' type='text' name='user[username]' id='username' value='<%=user.username%>'>
+            </div>
+            <div class='form-group'>
+                <label for='firstName'>First Name</label>
+                <input class='form-control' type='text' name='user[firstName]' id='firstName' value='<%=user.firstName%>'>
+            </div>
+            <div class='form-group'>
+                <label for='lastName'>Last Name</label>
+                <input class='form-control' type='text' name='user[lastName]' id='lastName' value='<%=user.lastName%>'>
+            </div>
+            <div class='form-group'>
+                <label for='email'>Email</label>
+                <input class='form-control' type='email' name='user[email]' id='email' value='<%=user.email%>'>
+            </div>
+            <div class='form-group'>
+                <label for='aboutMe'>About Me</label>
+                <textarea class='form-control' name='user[aboutMe]' id='aboutMe' rows='10'><%=user.aboutMe%></textarea>
+            </div>
+            <% if(currentUser.isAdmin) { %>
+                <div class='form-group'>
+                    <label for='adminCode'>adminCode</label>
+                    <input class='form-control' type='text' name='user[adminCode]' id='adminCode'>
+                </div>
+            <% } %>
+            <div class='form-group'>
+                <button class='btn btn-lg btn-warning btn-block'>Submit</button>
+            </div>
+        </form>
+        <a href='back'>Go Back</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>

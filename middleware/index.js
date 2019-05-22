@@ -50,28 +50,28 @@ middlewareObj.checkCommentOwnership = (req, res, next) =>{
     }
 };
 
-//profile ownership test
-// middlewareObj.checkProfileOwnership = (req, res, next) =>{
-//     if(req.isAuthenticated()){
-//         User.findById(req.params.user_id, (err, foundProfile) =>{
-//             if(err || !foundProfile){
-//                 req.flash('error', 'Profile not found');
-//                 res.redirect('back');
-//             } else {
-//                 //does user own the profile?
-//                 if(foundProfile.author.id.equals(req.user._id) || req.user.isAdmin){
-//                     next();
-//                 } else {
-//                     req.flash('error', 'You don\'t have permission to do that');
-//                     res.redirect('back');
-//                 }
-//             }
-//         });
-//     } else {
-//         req.flash('error', 'You need to be logged in to do that');
-//         res.redirect('back');
-//     }
-// };
+// check profile ownership
+middlewareObj.checkProfileOwnership = (req, res, next) =>{
+    if(req.isAuthenticated()){
+        User.findById(req.params.id, (err, foundProfile) =>{
+            if(err || !foundProfile){
+                req.flash('error', 'User profile not found');
+                res.redirect('/campgrounds');
+            } else {
+                //does user own the profile?
+                if(foundProfile._id.equals(req.user._id) || req.user.isAdmin){
+                    next();
+                } else {
+                    req.flash('error', 'You don\'t have permission to do that');
+                    res.redirect('/campgrounds');
+                }
+            }
+        });
+    } else {
+        req.flash('error', 'You need to be logged in to do that');
+        res.redirect('back');
+    }
+};
 
 middlewareObj.isLoggedIn = (req, res, next) =>{
     if(req.isAuthenticated()){

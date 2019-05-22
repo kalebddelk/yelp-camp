@@ -2,7 +2,7 @@
 
 <% if(currentUser && user._id.equals(currentUser.id)) { %>
     <div class='row'>
-        <a class='btn btn-warning btn-sm pull-right col-md-4' href='../forgot'>Forgot password?</a>
+        <a class='btn btn-warning btn-sm pull-right col-md-4' href='/users/<%=user._id%>/edit'>Edit Profile</a>
    </div>
 <% } %>
 <div class='row'>

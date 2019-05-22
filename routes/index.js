@@ -196,21 +196,4 @@ router.post('/reset/:token', (req, res) =>{
     });
 });
 
-//user profiles
-router.get('/users/:id', (req, res) =>{
-    User.findById(req.params.id, (err, foundUser) =>{
-        if(err) {
-            req.flash('error', 'Something went wrong.');
-            res.redirect('/');
-        }
-        Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds){
-            if(err) {
-                req.flash('error', 'Something went wrong.');
-                res.redirect('/');
-            }
-        res.render('users/show', {user: foundUser, campgrounds: campgrounds});
-        });
-    });
-});
-
 module.exports = router;
