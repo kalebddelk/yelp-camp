@@ -16,14 +16,28 @@ const geocoder = NodeGeocoder(options);
 
 // INDEX: Display list of all campgrounds
 router.get('/', (req, res) =>{
-    // Get all campgrounds from DB
-    Campground.find({}, (err, campgrounds) =>{
-        if(err){
-            console.log(err);
-        } else {
-            res.render('campgrounds/index', {campgrounds: campgrounds, page: 'campgrounds'});
-        }
-    });
+    let noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all campgrounds from DB
+        Campground.find({name: regex}, (err, allCampgrounds) =>{
+            if(err){
+                console.log(err);
+            } else if(allCampgrounds.length<1) {
+                noMatch = 'No campgrounds match that query. Please try again.';
+            }
+            res.render('campgrounds/index', {campgrounds: allCampgrounds, page: 'campgrounds', noMatch: noMatch});
+        });
+    } else {
+        // Get all campgrounds from DB
+        Campground.find({}, (err, allCampgrounds) =>{
+            if(err){
+                console.log(err);
+            } else {
+                res.render('campgrounds/index', {campgrounds: allCampgrounds, page:'campgrounds', noMatch: noMatch});
+            }
+        });
+    }
 });
 
 // EDIT CAMPGROUND ROUTE
@@ -118,5 +132,9 @@ router.get('/:id', (req, res) =>{
        }
     });
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
 
 module.exports = router;

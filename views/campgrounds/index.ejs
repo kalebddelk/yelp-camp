@@ -7,16 +7,27 @@
             <p>
                 <a href='/campgrounds/new' class='btn btn-primary btn-lg'>Add New Campground</a>
             </p>
+            <form class='form-inline' action='/campgrounds' method='GET'>
+                <div class='form-group'>
+                    <input class='form-control' type='text' name='search' placeholder='Campground search....'>
+                    <input class='form-control btn btn-default' type='submit' value='Search'>
+                </div>
+            </form>
         </div>
     </header>
     
-    <div class='row'>
+    <div class='row text-center'>
         <div class='col-lg-12'>
             <h3>Our Most Popular Campgrounds</h3>
         </div>
     </div>
         
     <div class='row text-center' style='display:flex; flex-wrap:wrap;'>
+        <div class='col-md-12'>
+            <% if(noMatch !== null) { %>
+                <h4><%=noMatch%></h4>
+            <% } %>
+        </div>
         <% campgrounds.forEach(function(campground){ %>
             <div class='col-md-3 col-sm-6'>
                 <div class='thumbnail'>
