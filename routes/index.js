@@ -5,7 +5,7 @@ const express    = require('express'),
       Campground = require('../models/campground'),
       async      = require('async'),
       nodemailer = require('nodemailer'),
-      crypto      = require('crypto');
+      crypto     = require('crypto');
 
 //Root Route
 router.get('/', (req, res) =>{
@@ -179,9 +179,9 @@ router.post('/reset/:token', (req, res) =>{
             let mailOptions = {
                 to: user.email,
                 from: 'kdd09f@gmail.com',
-                subject: 'Your password has been changed',
+                subject: 'Your YelpCamp password has been changed',
                 text: 'Hello,\n\n'+
-                    'This is a confirmation that the password for your account: '+user.email+' has just been changed.\n'
+                    'This is a confirmation that the password for your YelpCamp account: '+user.email+' has just been changed.\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
                 req.flash('success', 'Success! Your password has been changed');
