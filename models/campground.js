@@ -9,6 +9,7 @@ const campgroundSchema = new mongoose.Schema({
     location: String,
     lat: Number,
     lng: Number,
+    createdAt: {type: Date, default: Date.now},
     image: {
         id: String,
         url: String
